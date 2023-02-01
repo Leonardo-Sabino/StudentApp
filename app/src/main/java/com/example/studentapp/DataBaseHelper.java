@@ -77,7 +77,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         }
 
-        public ArrayList<Alunos> getTodosAlunosAprovados() {
+        public ArrayList<Alunos> getTodosAlunosAprovados() { //cursor é apontar para uma única linha do resultado buscado pela consulta
             ArrayList<Alunos> alunos = new ArrayList<>();
             SQLiteDatabase db = this.getReadableDatabase(); // getReadableDatabase para ler os dados
             //cursor vai contenter todas os dados da nossas tabelas quando retornarmos o metodo getReadableDatabase
@@ -116,8 +116,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return alunos;
 
     }
-
-        //para eliminar um aluno
+    //para eliminar um aluno
 //        public void deleteStudent(Alunos aluno) {
 //            SQLiteDatabase db = this.getWritableDatabase(); //usa a classe SQLiteDatabase para abrir a base de dados para escrita
 //            db.delete(TABLE_NAME, COLUMN_ID + " = ?", new String[]{String.valueOf(student.getId())});

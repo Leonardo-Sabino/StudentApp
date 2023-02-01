@@ -2,6 +2,9 @@ package com.example.studentapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +17,7 @@ public class RegistrarAluno extends AppCompatActivity {
     EditText nome, id_aluno, nota1,nota2;
     Button registrar, cancelar;
     DataBaseHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +42,42 @@ public class RegistrarAluno extends AppCompatActivity {
         float n1 = Float.parseFloat(nota1.getText().toString());
         float n2 = Float.parseFloat(nota2.getText().toString());
         float media = (n1 + n2) / 2;
-
-        //para adicionar os alunos a base de dados
         Alunos aluno = new Alunos(id,name,n1,n2,media);
-        dbHelper.addAluno(aluno); //para adicioanar os alunos na base
 
-        //Toast.makeText(this, "Aluno registrado com sucesso!", Toast.LENGTH_SHORT).show();
+        if (n1 < 0 || n1 > 20 || n2 < 0 || n2 > 20 ){
+            Toast.makeText(this, "Valor da nota não é válido", Toast.LENGTH_SHORT).show();
+        }
+        else if( id == 0){
+            Toast.makeText(this, "Id inválido", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+            //para adicionar os alunos a base de dados
+            dbHelper.addAluno(aluno); //para adicioanar os alunos na base
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void cancelar(View view) {
-        finish(); //faz retornar a activity
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                       Intent intent = new Intent(RegistrarAluno.this,MainActivity.class);
+                       startActivity(intent);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Tem certeza que deseja cancelar?").setPositiveButton("Sim", dialogClickListener)
+                .setNegativeButton("Não", dialogClickListener).show();
     }
 }
