@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarAluno">
+
+    <TextView
+        android:id="@+id/text_view_registrar"
+        android:text="Registar um novo aluno"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_marginTop="170dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <EditText
+        android:id="@+id/nome_registar"
+        android:hint="Nome"
+        android:inputType="text"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+
+
+    </EditText>
+    <EditText
+        android:id="@+id/id_aluno"
+        android:hint="Id do aluno"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/nota1"
+        android:hint="Nota 1"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/nota2"
+        android:hint="Nota 2"
+        android:inputType="number"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_marginStart="70dp"
+        android:layout_marginEnd="70dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/butao_registar2"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:text="Registrar"
+            android:onClick="registrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Button>
+
+        <Button
+            android:id="@+id/butao_cancelar"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:text="Cancelar"
+            android:onClick="cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Button>
+    </LinearLayout>
+
+
+</LinearLayout>
